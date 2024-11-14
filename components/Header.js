@@ -1,12 +1,18 @@
+'use client'
+
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
 import React from 'react'
+// import { useRouter } from 'next/navigation'
 
 function Header() {
+  // const router = useRouter()
+  
   return (
     <div>
         <header class='flex bg-white border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50'>
     <div class='max-w-7xl mx-auto flex flex-wrap items-center lg:gap-y-2 gap-4 w-full'>
-      <a href="javascript:void(0)" className='flex items-center justify-start space-x-4'>
+      <a href="/" className='flex items-center justify-start space-x-4'>
         <Image src={"/logo_icon.png"} width={30} height={30} alt='silent M designs Icon'/>
         <h1 className='text-2xl font-black uppercase text-green-500'>Silent
            <span className='text-4xl'> M </span>
@@ -34,13 +40,12 @@ function Header() {
             </a>
           </li>
           <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-              class='text-[#007bff] hover:text-[#007bff] text-[15px] block font-semibold'>New</a></li>
+              class='text-[#007bff] hover:text-[#007bff] text-[15px] block font-semibold'>Stationery</a></li>
           <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-              class='text-[#333] hover:text-[#007bff] text-[15px] block font-semibold'>Men</a></li>
+              class='text-[#333] hover:text-[#007bff] text-[15px] block font-semibold'>Technology</a></li>
           <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-              class='text-[#333] hover:text-[#007bff] text-[15px] block font-semibold'>Women</a></li>
-          <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
-              class='text-[#333] hover:text-[#007bff] text-[15px] block font-semibold'>Kids</a></li>
+              class='text-[#333] hover:text-[#007bff] text-[15px] block font-semibold'>Gifting</a></li>
+          
         </ul>
       </div>
   
@@ -76,13 +81,27 @@ function Header() {
             </svg>
             <span class="absolute left-auto -ml-1 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">0</span>
           </span>
-          <button
-            class='px-5 py-2 text-sm rounded-full text-white border-2 border-[#007bff] bg-[#007bff] hover:bg-[#004bff]'>Sign
-            In</button>
-            <button
-            class='py-2 text-sm font-semibold text-black hover:text-[#004bff] !ml-4'>Create account
-            </button>
-  
+
+          {/* Authentication Buttons */}
+          <div className='flex space-x-4 items-center'>
+            <SignedOut>
+              <a
+                href='/sign-in'
+                class='px-5 py-2 text-sm rounded-full text-white border-2 border-[#007bff] bg-[#007bff] hover:bg-[#004bff]'>
+                  Sign In
+              </a>
+              <a
+              href='/sign-up'
+              class='py-2 text-sm font-semibold text-black hover:text-[#004bff] !ml-4'>
+                Create account
+              </a>
+            </SignedOut>
+            <SignedIn>
+              <UserButton/>
+            </SignedIn>
+            
+          </div>
+          
           <button id="toggleOpen" class='lg:hidden'>
             <svg class="w-7 h-7" fill="#333" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
