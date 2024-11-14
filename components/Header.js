@@ -87,7 +87,7 @@ function Header() {
             <SignedOut>
               <a
                 href='/sign-in'
-                class='px-5 py-2 text-sm rounded-full text-white border-2 border-[#007bff] bg-[#007bff] hover:bg-[#004bff]'>
+                class='px-5 py-2 text-sm rounded-full text-white border-2 border-[#007bff] bg-[#007bff] hover:bg-green-900'>
                   Sign In
               </a>
               <a
